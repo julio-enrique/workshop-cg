@@ -31,6 +31,7 @@
  * -> async: If declared as async then the function should return a promise.
  * -> param: List of parameters the function accepts. Make sure the parameters match the function signature.
  * -> module: Use CORE or CUSTOM. If you are a Salesforce client or an implementation partner, always use CUSTOM to enable a seamless release upgrade.
+ * -> extends: Base class of the LO, BO, and LU objects that this function belongs to.
  * -> maxRuntime: Maximum time this function is allowed to run, takes integer value in ms. If the max time is exceeded, error is logged.
  * -> returns: Type and variable name in which the return value is stored.
  * @function getSurveys
@@ -244,7 +245,7 @@ if (loCurrentPOS.length > 0) {
                 "hide": "0",
                 "value": liSurveyProduct["get" + currentPOSColumnSurvey.getDisplayColumnNameCapitalized()]()
               };
-              if (bConsiderTargetValues && currentPOSColumnSurvey.getPresetting() === "TargetValue" && currentPOSColumnSurvey.getTargetValueColumn() != "0" && currentPOSColumnSurvey.getTargetValueColumn() !== " ") {
+              if (bConsiderTargetValues && currentPOSColumnSurvey.getPresetting() === "TargetValue" && currentPOSColumnSurvey.getTargetValueColumn() != "0") {
                 newLiColumnSurvey.targetValue = liSurveyProduct["getPresetting" + currentPOSColumnSurvey.getTargetValueColumn()]();
                 if (currentPOSColumnSurvey.getToggleId() == "DomPrdDistributed" && (Utils.isEmptyString(newLiColumnSurvey.value) || newLiColumnSurvey.value == "0")) {
                   newLiColumnSurvey.value = 'Distributed';
@@ -339,7 +340,7 @@ if (loCurrentPOS.length > 0) {
                     "groupSort": Utils.isDefined(currentPOSColumnSurvey) ? liJobDefinition.getJobListPKey() + liJobDefinition.getJobDefListPKey() + addPrefixZeros(sortFieldLength, currentPOSColumnSurvey.getDisplayColumnIndex()) : " ",
                     "hide": (liJobDefinition.getIsMatrixSurvey() == "1") ? "1" : "0"
                   };
-                  if (bConsiderTargetValues && liJobDefinition.getPresetting() === "TargetValue" && liJobDefinition.getTargetValueColumn() != "0" && currentPOSColumnSurvey.getTargetValueColumn() !== " ") {
+                  if (bConsiderTargetValues && liJobDefinition.getPresetting() === "TargetValue" && liJobDefinition.getTargetValueColumn() != "0") {
                     newLiSurvey.targetValue = liSurveyProduct["getPresetting" + liJobDefinition.getTargetValueColumn()]();
                     newLiSurvey.value = newLiSurvey.targetValue;
                     if (liJobDefinition.getToggleId() == "PrdDistributed" && (Utils.isEmptyString(newLiSurvey.value) || newLiSurvey.value == "0")) {

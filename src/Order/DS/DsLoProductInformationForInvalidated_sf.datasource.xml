@@ -19,7 +19,7 @@
     <Entity name="Product2" alias="ProductGroup">
       <Join Type="inner">
         <ComplexJoin><![CDATA[
-            Product2.#criterionAttribute# <> ' ' AND Product2.#criterionAttribute# = ProductGroup.Consumer_Goods_Product_Code__c AND ProductGroup.Sales_Org__c = '#SalesOrg#'
+            Product2.#criterionAttribute# = ProductGroup.Consumer_Goods_Product_Code__c AND ProductGroup.Sales_Org__c = '#SalesOrg#'
             ]]></ComplexJoin>
       </Join>
     </Entity>

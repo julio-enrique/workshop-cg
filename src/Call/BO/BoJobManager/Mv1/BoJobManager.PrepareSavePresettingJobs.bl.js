@@ -31,6 +31,7 @@
  * -> async: If declared as async then the function should return a promise.
  * -> param: List of parameters the function accepts. Make sure the parameters match the function signature.
  * -> module: Use CORE or CUSTOM. If you are a Salesforce client or an implementation partner, always use CUSTOM to enable a seamless release upgrade.
+ * -> extends: Base class of the LO, BO, and LU objects that this function belongs to.
  * -> maxRuntime: Maximum time this function is allowed to run, takes integer value in ms. If the max time is exceeded, error is logged.
  * -> returns: Type and variable name in which the return value is stored.
  * @function prepareSavePresettingJobs
@@ -95,7 +96,7 @@ var promise = me.loadAndSetPrerequisites("SavePresettingPreparation").then(
       liJobDef = loJobDefs[idxJobDef];
 
       // filter out targetValue JobDefs without targetValueColumn
-      if (liJobDef.getPresetting() === "TargetValue" && liJobDef.getTargetValueColumn() === "0" && currentLiJobDefinition.getTargetValueColumn() != " ") {
+      if (liJobDef.getPresetting() === "TargetValue" && liJobDef.getTargetValueColumn() === 0) {
         continue;
       }
 

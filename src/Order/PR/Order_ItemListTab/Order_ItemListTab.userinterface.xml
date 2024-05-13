@@ -486,7 +486,7 @@
             </Bindings>
           </Stepper>
           <!-- Special Price -->
-          <Stepper name="SpecialPrice" minValue="0" maxValue="9999999999.99">
+          <Stepper name="SpecialPrice" minValue="0">
             <Bindings>
               <Resource target="Label" type="Label" defaultLabel="Sp. Price" id="SpecialPriceId" />
               <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::MainBO.boItemTabManager.loUnitOfMeasure.Current.specialPriceReceipt" bindingMode="TWO_WAY" />

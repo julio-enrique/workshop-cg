@@ -628,13 +628,7 @@ function renderChart_unsuccessfulVisits() {
                 ],
                 type: "gauge",
             },
-            gauge: {
-                label: {
-                    format: function(value, ratio) {
-                        return formatGaugeChartValue(value);
-                    }
-                }
-            },
+            gauge: {},
             color: {
                 pattern: config_unsuccessfulVisits.measureColors, // the three color levels for the percentage values.
                 threshold: {
@@ -728,13 +722,7 @@ function renderChart_visitRate() {
                 ],
                 type: "gauge",
             },
-            gauge: {
-                label: {
-                    format: function(value, ratio) {
-                        return formatGaugeChartValue(value);
-                    }
-                }
-            },
+            gauge: {},
             color: {
                 pattern: config_visitRate.measureColors, // the three color levels for the percentage values.
                 threshold: {
@@ -821,13 +809,6 @@ function formatValue(d) {
         setupLocale();
     }
     return locale.format("$,")(d);
-}
-
-function formatGaugeChartValue(d) {
-    if (!PluginManager.helpers.isDefined(locale)) {
-        setupLocale();
-    }
-    return locale.format(",")(d) + "%";
 }
 
     ]]></UIComponentJS>
